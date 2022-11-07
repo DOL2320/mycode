@@ -1,8 +1,7 @@
 # mycode
 Tracking my code
 
-One Paragraph of your project description goes here. Describe what you're trying to do.
-What is the purpose of putting up this repo?
+This repository will be used to house my work in the alta3 linux/python course.
 
 ## Getting Started
 
