@@ -1,7 +1,8 @@
 # mycode
 Tracking my code
 
-This repository will be used to house my work in the alta3 linux/python course.
+This repository will be used to house my work in the alta3 linux/python course. It will
+also serve as a place to continue my learning about version control with git.
 
 ## Getting Started
 
