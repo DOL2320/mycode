@@ -12,9 +12,9 @@ print("Welcome to Rock, Paper, Scissors. First player to 5 wins!")
 while user_score < 5 and cpu_score < 5:
     # Collect user input
     user_input = input("Make a selection (Rock, Paper, Scissors): ").capitalize()
-    
-    # Validate user input
-    if not user_input:
+
+    # Validate user input. Should be non-empty and either Rock, Paper, or Scissors
+    if not user_input or user_input != 'Rock' and user_input != 'Paper' and user_input != 'Scissors':
         continue
 
     cpu_pick = cpu_picks[random.randrange(cpu_picks.__len__())].capitalize()
