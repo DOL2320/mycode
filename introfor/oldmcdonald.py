@@ -7,15 +7,19 @@ farms = [{"name": "NE Farm", "agriculture": ["sheep", "cows", "pigs", "chickens"
 ## Part 1
 # Store the agriculture array in a new variable to iterate through the list
 ne_farm = farms[0]['agriculture']
+print('The animals of the NE farm:')
 
 # Iterate through the agriculture list and print the animals
 for animal in ne_farm:
-    print(animal)
-
-# Ask the user to choose a farm
-farm_choice = input('Choose a farm (NE Farm, W Farm, or SE Farm): ')
+    print(' ', animal, sep='')
+print()
 
 ## Part 2
+# Ask the user to choose a farm
+for farm in farms:
+    print('-', farm['name'])
+farm_choice = input('Choose a farm: ')
+
 # Declare an empty list to store agriculture
 farm_ag = []
 
