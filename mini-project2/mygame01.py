@@ -37,11 +37,14 @@ inventory = []
 rooms = {
 
             'Hall' : {
-                  'south' : 'Kitchen',
                   'east'  : 'Dining Room',
+                  'south' : 'Kitchen',
+                  'west'  : 'Library',
                   'item'  : 'key'
                 },
-
+            'Library' : {
+                  'east'  : 'Hall'
+                },
             'Kitchen' : {
                   'north' : 'Hall',
                   'item'  : 'monster'
