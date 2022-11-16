@@ -112,8 +112,10 @@ while True:
             inventory.append(move[1])
             #display a helpful message
             print(move[1] + ' got!')
-            #delete the item key:value pair from the room's dictionary
-            del rooms[currentRoom]['items'][0]
+            # find the index of the item
+            item_index = rooms[currentRoom]['items'].index(move[1])
+            # pop the item from the list
+            rooms[currentRoom]['items'].pop(item_index)
         # if there's no item in the room or the item doesn't match
         else:
             #tell them they can't get it
