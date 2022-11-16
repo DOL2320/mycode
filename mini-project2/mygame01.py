@@ -27,8 +27,9 @@ def showStatus():
     # print what the player is carrying
     print('Inventory:', inventory)
     # check if there's an item in the room, if so print it
-    if "item" in rooms[currentRoom]:
-      print('You see a ' + rooms[currentRoom]['item'])
+    if "items" in rooms[currentRoom]:
+        for item in rooms[currentRoom]['items']:
+            print('You see a ' + item)
     print("---------------------------")
 
 
@@ -43,7 +44,6 @@ rooms = {
                   'south' : 'Kitchen',
                   'west'  : 'Library',
                   'desc'  : 'To the east is the Dining Room.\nTo the south is the Kitchen.\nTo the west is the Library.',
-                  'item'  : 'key'
                 },
             'Library' : {
                   'east'  : 'Hall',
@@ -52,18 +52,19 @@ rooms = {
                 },
             'Study' : {
                   'south' : 'Library',
-                  'desc'  : 'To the south is the Library.'
+                  'desc'  : 'To the south is the Library.',
+                  'items' : ['key', 'coin']
                 },
             'Kitchen' : {
                   'north' : 'Hall',
                   'desc'  : 'To the north is the Hall.',
-                  'item'  : 'monster'
+                  'enemy' : 'monster'
                 },
             'Dining Room' : {
                   'west'  : 'Hall',
                   'south' : 'Garden',
                   'desc'  : 'To the west is the Hall.\nTo the south is the Garden.',
-                  'item'  : 'potion'
+                  'items' : ['potion']
                 },
             'Garden' : {
                   'north' : 'Dining Room',
@@ -106,20 +107,20 @@ while True:
         # make two checks:
         # 1. if the current room contains an item
         # 2. if the item in the room matches the item the player wishes to get
-        if "item" in rooms[currentRoom] and move[1] in rooms[currentRoom]['item']:
+        if "items" in rooms[currentRoom] and move[1] in rooms[currentRoom]['items']:
             #add the item to their inventory
             inventory.append(move[1])
             #display a helpful message
             print(move[1] + ' got!')
             #delete the item key:value pair from the room's dictionary
-            del rooms[currentRoom]['item']
+            del rooms[currentRoom]['items'][0]
         # if there's no item in the room or the item doesn't match
         else:
             #tell them they can't get it
             print('Can\'t get ' + move[1] + '!')
 
     ## If a player enters a room with a monster
-    if 'item' in rooms[currentRoom] and 'monster' in rooms[currentRoom]['item']:
+    if 'enemy' in rooms[currentRoom] and 'monster' in rooms[currentRoom]['enemy']:
         print('A monster has got you... GAME OVER!')
         break
 
