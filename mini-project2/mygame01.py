@@ -108,7 +108,8 @@ while True:
         print('A monster has got you... GAME OVER!')
         break
 
-    ## If a player enters the garden with the key and the potion, they win
+    ## Define how a player can win
     if currentRoom == 'Garden' and 'key' in inventory and 'potion' in inventory:
         print('You escaped the house with the ultra rare key and magic potion... YOU WIN!')
         break
+
