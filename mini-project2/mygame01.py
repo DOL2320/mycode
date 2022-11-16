@@ -22,6 +22,8 @@ def showStatus():
     # print the player's current location
     print('---------------------------')
     print('You are in the ' + currentRoom)
+    # print the room description
+    print(rooms[currentRoom]['desc'])
     # print what the player is carrying
     print('Inventory:', inventory)
     # check if there's an item in the room, if so print it
@@ -40,26 +42,32 @@ rooms = {
                   'east'  : 'Dining Room',
                   'south' : 'Kitchen',
                   'west'  : 'Library',
+                  'desc'  : 'To the east is the Dining Room.\nTo the south is the Kitchen.\nTo the west is the Library.',
                   'item'  : 'key'
                 },
             'Library' : {
                   'east'  : 'Hall',
-                  'north' : 'Study'
+                  'north' : 'Study',
+                  'desc'  : 'To the east is the Hall.\nTo the north is the Study.'
                 },
             'Study' : {
-                  'south' : 'Library'
+                  'south' : 'Library',
+                  'desc'  : 'To the south is the Library.'
                 },
             'Kitchen' : {
                   'north' : 'Hall',
+                  'desc'  : 'To the north is the Hall.',
                   'item'  : 'monster'
                 },
             'Dining Room' : {
                   'west'  : 'Hall',
                   'south' : 'Garden',
+                  'desc'  : 'To the west is the Hall.\nTo the south is the Garden.',
                   'item'  : 'potion'
                 },
             'Garden' : {
-                  'north' : 'Dining Room'
+                  'north' : 'Dining Room',
+                  'desc'  : 'To the north is the Dining Room.'
                 }
          }
 
