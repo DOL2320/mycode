@@ -3,10 +3,13 @@
    Creating an API.
    Author: Dorian Majano"""
 
-# Import the functions needed to serve JSON data
+# Import sqlite3
+import sqlite3 as sql
+
+# Import flask functions
 from flask import Flask
 from flask import request
-from flask import redirect
+from flask import render_template
 from flask import jsonify
 
 # Create a Flask instance
@@ -36,25 +39,15 @@ data= [{
 }]
 
 # Create route to GET bands
-@app.route("/bands")
-def bands():
+@app.route("/")
+def index():
     # jsonify returns legal JSON
     return jsonify(data)
 
-# Create route to POST bands
-@app.route("/create/bands", methods=["POST"])
-def createBands():
-    if request.method == 'POST':
-        req = request.json
-        if req:
-            req = json.loads(req)
-            band = req["band"]
-            category = req["category"]
-            members = req["members"]
-            albums = req["albums"]
-            data.append({"band":band,"category":category,"members":members,"albums":albums})
-
-    return jsonify(data)
+# Create route to render html
+@app.route("/albums")
+def albums():
+    return render_template("albums.html", albums=data["albums"])
 
 if __name__ == "__main__":
     app.run(host="0.0.0.0", port=2224)
