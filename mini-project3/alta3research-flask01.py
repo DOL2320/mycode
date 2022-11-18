@@ -4,9 +4,11 @@
    Author: Dorian Majano"""
 
 # Import the functions needed to serve JSON data
+import json
 from flask import Flask
 from flask import request
 from flask import redirect
+from flask import render_template
 from flask import jsonify
 
 # Create a Flask instance
@@ -41,20 +43,10 @@ def bands():
     # jsonify returns legal JSON
     return jsonify(data)
 
-# Create route to POST bands
-@app.route("/create/bands", methods=["POST"])
-def createBands():
-    if request.method == 'POST':
-        req = request.json
-        if req:
-            req = json.loads(req)
-            band = req["band"]
-            category = req["category"]
-            members = req["members"]
-            albums = req["albums"]
-            data.append({"band":band,"category":category,"members":members,"albums":albums})
-
-    return jsonify(data)
+# Create a route to GET albums and render html
+@app.route("/albums/<int:index>")
+def albums(index):
+    return render_template("albums.html", band=data[index]["band"], albums=data[index]["albums"])
 
 if __name__ == "__main__":
     app.run(host="0.0.0.0", port=2224)
